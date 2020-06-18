@@ -19,18 +19,18 @@ class GenLaser(ActionPlugin):
         popt = pctl.GetPlotOptions()
         popt.SetOutputDirectory(path)
         popt.SetPlotFrameRef(False)     #do not change it
-        popt.SetLineWidth(FromMM(0.35))
+        popt.SetLineWidth(FromMM(0.1))
         
         popt.SetAutoScale(False)        #do not change it
         popt.SetScale(1)                #do not change it
         popt.SetMirror(False)
-        popt.SetUseGerberAttributes(True)
+        popt.SetUseGerberAttributes(False)
         popt.SetIncludeGerberNetlistInfo(True)
         #popt.SetCreateGerberJobFile(gen_job_file)
         popt.SetUseGerberProtelExtensions(False)
         popt.SetExcludeEdgeLayer(False);
         popt.SetScale(1)
-        popt.SetUseAuxOrigin(True)
+        popt.SetUseAuxOrigin(False)
         # This by gerbers only
         popt.SetSubtractMaskFromSilk(False)
         # Disable plot pad holes
