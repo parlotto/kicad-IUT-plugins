@@ -116,7 +116,7 @@ class GenLaser(ActionPlugin):
          
         try :
             os.mkdir(outDir)
-        except FileExistsError :
+        except :  # ugly but FileExistsError is not available en python 2.x
             #silently rewrite if already exists
             pass
         
@@ -132,7 +132,11 @@ class GenLaser(ActionPlugin):
         f.write('Manufacturing files for Laser at GEII Toulon\n' )
         f.write('Board : ' + fileNameNoExt +'\n')
         f.write('Generated on '+strNow+'\n')
-        f.write('Pcbnew Version : '+GetBuildVersion()+'\n')
+        try :
+            f.write('Pcbnew Version : '+GetBuildVersion()+'\n')
+        except : # It seems that some builds do not have GetBuildVersion exported
+            f.write('Pcbnew Version : ' + 'na' + '\n')
+        
         f.write('Plugin version : '+ PLUGIN_VERSION+'\n')
         f.close()
         
