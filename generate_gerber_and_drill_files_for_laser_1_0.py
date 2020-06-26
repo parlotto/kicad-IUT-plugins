@@ -1,6 +1,7 @@
 from pcbnew import *
 import os
 import  datetime
+import shutil
 
 PLUGIN_VERSION = '1.0'
 
@@ -8,10 +9,10 @@ class GenLaser(ActionPlugin):
     def defaults(self):
         self.name = "Generate gerber and drill files for Laser at GEII Toulon "\
         +PLUGIN_VERSION
-        self.category = "GEII TOULON"
+        self.category = "GEII Toulon plugins"
         self.description = "Generate gerber and drill files for Laser"
         self.show_toolbar_button = True # Optional, defaults to False
-        self.icon_file_name = os.path.join(os.path.dirname(__file__), 'dl300.png') # Optional, defaults to ""
+        self.icon_file_name = os.path.join(os.path.dirname(__file__), 'dl300.png')  
 
     def genGerber(self,board,path):
 
@@ -122,7 +123,9 @@ class GenLaser(ActionPlugin):
         
         self.genDrill(board,outDir,fileNameNoExt)
         self.genGerber(board,outDir)
-
+        # also copy board to outDir if we need to merge multiple board
+        shutil.copy2(absoluteFileName,outDir)
+        
         now = datetime.datetime.now()
         strNow=now.strftime("%Y-%m-%d %H:%M:%S")
         try :
