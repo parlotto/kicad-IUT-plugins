@@ -4,9 +4,11 @@ Some usefull plugins for kicad
 
 generate_gerber_and_drill_files_for_laser.py : A plugin to generate manufacturing files needed for Laser at University of Toulon
 
+generate_manufacturing_files_for_chemical_etching.py : A plugin to generate manufacturing files needed for chemical etching at University of Toulon
+
 ### Prerequisites
 
-kicad version > 5.1 
+kicad version >= 5.1.2 
 
 ### Installing
 
@@ -24,6 +26,8 @@ On Windows
     %APPDATA%/Roaming/kicad/scripting/plugins
 
 Then Restart PCBNEW or Run Tools -> External Plugins... -> Refresh Plugins
+
+(Sometimes it may be nessecary to close PCBNEW and kicad and restart)
 
 New toolbar buttons should appear at the right of the upper toolbar (right of sricpting console).
 
