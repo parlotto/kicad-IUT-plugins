@@ -110,6 +110,9 @@ class GenLaser(ActionPlugin):
         board = GetBoard()
         absoluteFileName=board.GetFileName()
 
+        # save the current board
+        board.Save(absoluteFileName)
+
         dirName =  os.path.dirname(absoluteFileName)
         fileName = os.path.basename(absoluteFileName)
         fileNameNoExt =  os.path.splitext(fileName)[0]
@@ -118,7 +121,7 @@ class GenLaser(ActionPlugin):
         try :
             os.mkdir(outDir)
         except :  # ugly but FileExistsError is not available en python 2.x
-            #silently rewrite if already exists
+            #silently pass if already exists
             pass
         
         self.genDrill(board,outDir,fileNameNoExt)
