@@ -23,6 +23,10 @@ class SimplePlugin(pcbnew.ActionPlugin):
     def Run(self):
         board = pcbnew.GetBoard()
         absoluteFileName=board.GetFileName()
+        
+        # save the current board
+        board.Save(absoluteFileName)
+        
         dirName =  os.path.dirname(absoluteFileName)
         fileName = os.path.basename(absoluteFileName)
         fileNameNoExt =  os.path.splitext(fileName)[0]
@@ -43,6 +47,7 @@ class SimplePlugin(pcbnew.ActionPlugin):
         
         self.genPostscript(board,outDir)
         self.genDrill(board,outDir,fileNameNoExt)
+        # also copy board to outDir if we need to merge multiple board
         shutil.copy2(absoluteFileName,outDir)
 
     def genPostscript(self,board,path):
@@ -52,6 +57,7 @@ class SimplePlugin(pcbnew.ActionPlugin):
          po.SetPlotFrameRef(False)
          po.SetOutputDirectory(path)
          po.SetA4Output(True)
+         po.SetScale(1.0)
          po.SetExcludeEdgeLayer(False)
          po.SetDrillMarksType(po.SMALL_DRILL_SHAPE)
          # Set options for front Copper layer 
