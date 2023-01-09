@@ -20,7 +20,7 @@ class GenLaser(ActionPlugin):
         popt = pctl.GetPlotOptions()
         popt.SetOutputDirectory(path)
         popt.SetPlotFrameRef(False)     #do not change it
-        popt.SetLineWidth(FromMM(0.1))
+        #popt.SetLineWidth(FromMM(0.1)) # commented for kicad 6
         
         popt.SetAutoScale(False)        #do not change it
         popt.SetScale(1)                #do not change it
