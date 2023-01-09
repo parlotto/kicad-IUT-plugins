@@ -8,7 +8,7 @@ Some usefull plugins for kicad
 
 ### Prerequisites
 
-kicad version >= 5.1.2 
+kicad version >= 6
 
 ### Installing
 
@@ -19,6 +19,8 @@ Currently on a Linux Installation the plugins search path is
     /usr/share/kicad/scripting/plugins/
     ~/.kicad/scripting/plugins
     ~/.kicad_plugins/
+On kicad 6 ubuntu for example :
+    ~/.local/share/kicad/6.0/scripting/plugins/ (pligin files should not reside in subdirectory)
 
 On Windows
 
@@ -44,7 +46,7 @@ This project is licensed under the GPL licence
 
 ## Acknowledgments
 
-* Inspiration : https://github.com/im-tomu
+* Inspiration : many opensource projects ...
 
 
 
